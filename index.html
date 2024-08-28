@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Catalog</title>
+    <link rel="icon" href="icon (2).png" type="image/x-icon">
+    <style>
+     body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('background.avif') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    line-height: 1.6;
+}
+
+main {
+    padding: 40px 20px;
+    max-width: 1050px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+}
+
+/* Heading styling */
+h1 {
+    font-size: 40px;
+    color: #1a1a2e;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background-color: #e94560;
+    display: block;
+    margin: 20px auto 0;
+    border-radius: 2px;
+}
+
+/* Project grid styling */
+.project-grid {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1100px;
+    background: transparent;
+    border-radius: 15px;
+}
+
+/* Project card styling */
+.project-card {
+    background: linear-gradient(145deg, #ffffff, #f0f2f5);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: -75px;
+    right: -75px;
+    width: 150px;
+    height: 150px;
+    background-color: #e94560;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    z-index: 0;
+}
+
+.project-card:hover::before {
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+}
+
+.project-card h2 {
+    font-size: 24px;
+    color: #1a1a2e;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.project-card p {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Read More functionality */
+.description .more {
+    display: none;
+}
+
+.read-more {
+    color: #1a1a2e;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #e94560;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    cursor: pointer;
+}
+
+.read-more:hover {
+    color: #e94560;
+    border-bottom-color: #1a1a2e;
+}
+
+.view-project {
+    color: #ffffff;
+    background-color: #e94560;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px; /* Slightly smaller font size */
+    position: relative;
+    z-index: 1;
+    padding: 8px 18px; /* Adjusted padding for a smaller size */
+    padding-bottom: 2px;
+    border-bottom: 2px solid #e94560;
+    border-radius: 8px; /* Curved edges on all sides */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    display: block;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.view-project:hover {
+    background-color: #ffffff; /* White background on hover */
+    color: #e94560; /* Red text on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer styling */
+footer {
+    background-color:transparent;
+    padding: 20px 0;
+    color: #000000;
+    text-align: center;
+    margin-top: 40px;
+    box-shadow: 0 -4px 8px rgba(250, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+footer p a {
+    color: #e94560;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer p a:hover {
+    text-decoration: underline;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    .project-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 490px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .project-card {
+        padding: 15px;
+    }
+
+    h1 {
+        margin-top: 80px;
+        font-size: 28px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+      
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="logo-no-background.png" alt="CataLog"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="https://nex-gen-creations.vercel.app/">About Us</a></li>
+                <li><a href="https://nex-gen-creations.vercel.app/">Services</a></li>
+                <li><a href="https://nex-gen-creations.vercel.app/">Clients</a></li>
+                
+                
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="https://wa.me/+917696879550">Contact Us</a></li>
+            </ul>
+            <a href="https://wa.me/+917696879550" class="chat-now" target="_blank">Chat Now</a>
+    
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.burger');
+            const navLinks = document.querySelector('.nav-links');
+            const navItems = document.querySelectorAll('.nav-links li a');
+    
+            // Function to toggle navigation menu
+            const toggleNav = () => {
+                navLinks.classList.toggle('active');
+                burger.classList.toggle('toggle');
+            };
+    
+            // Burger menu toggle interaction
+            burger.addEventListener('click', toggleNav);
+    
+            // Close nav when clicking a link
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        toggleNav();
+                    }
+                });
+            });
+    
+            // Close nav when clicking outside the nav on small screens
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !burger.contains(e.target) && navLinks.classList.contains('active')) {
+                    toggleNav();
+                }
+            });
+        });
+    </script>
+    <style>
+        
+header {
+    padding: 1rem 2rem;
+}
+/* Existing styles */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 15px 0; /* Smaller vertical padding */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1090px;
+    margin: 10px auto; /* Center the nav horizontally and add top margin */
+    border: 1px solid #f0f0f0;
+    position: fixed; /* Fixed position at the top */
+    top: 0;
+    left: 50%; /* Center the nav horizontally */
+    transform: translateX(-50%);
+    z-index: 1000; /* Ensure it stays above other content */
+    text-align: center; /* Center the text */
+    width: 100%; /* Ensure the nav takes full width */
+}
+
+
+.logo img {
+    height: 40px; /* Adjusted logo size */
+    margin: 0 20px; /* Add horizontal margin for spacing */
+    transition: filter 0.3s; /* Smooth transition for logo hover effect */
+}
+
+.logo img:hover {
+    filter: brightness(0.9); /* Slightly darken logo on hover */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0 auto; /* Center the nav links horizontally */
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.0rem;
+    transition: color 0.3s; /* Smooth transition for text color */
+}
+
+.nav-links li a:hover {
+    color: #0066cc; /* Light blue color on hover */
+}
+
+.chat-now {
+    background-color: #6c63ff; /* Button background color */
+    color: #fff; /* Text color */
+    border: none; /* No border */
+    padding: 0.5rem 0.75rem; /* Padding inside the button */
+    border-radius: 7px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Font size */
+    margin: 0 20px; /* Horizontal margin for spacing */
+    text-decoration: none; /* Remove underline from link */
+    display: inline-block; /* Fit to content */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.chat-now:hover {
+    background-color: #5a54e5; /* Slightly darker shade for hover effect */
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+    margin: 0 20px; /* Add horizontal margin for spacing */
+}
+
+.burger div {
+    width: 20px;
+    height: 2px;
+    background-color: #333;
+    margin: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide nav-links initially */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 100%; /* Position below the navbar */
+        left: 0;
+        background-color: #ffffff;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .chat-now {
+        display: none;
+    }
+}
+@media (max-width: 490px) {
+    .nav-links {
+        display: none; /* Hide nav-links initially */
+        flex-direction: column;
+        width: 390px;
+        height: 320px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+        padding-top: 20px; /* Add padding to the top of the nav links when active */
+    }
+
+    .nav-links li {
+        margin-top: 10px; /* Add margin to each item */
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .chat-now {
+        display: block; /* Make "Chat Now" visible */
+        margin: 10px 0; /* Add margin to separate it from other links */
+        width: auto; /* Adjust the width to fit content */
+        padding: 0.5rem 1.25rem; /* Adjust padding for mobile view */
+        text-align: center; /* Center the text */
+        background-color: #6c63ff; /* Button background color */
+        color: white; /* Button text color */
+        border: none; /* Remove border */
+        border-radius: 7px; /* Rounded corners */
+    }
+}
+
+
+
+
+    </style>
+    
+    
+
+    <main>
+        <section id="projects">
+            <h1>My Projects</h1>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h2>Colour Fit A Digital Agency - Your Partner in Digital Transformation</h2>
+                    <p class="description">
+                        Colour Fit A Digital Agency is a leading force in the digital world, dedicated to empowering businesses with cutting-edge marketing solutions<span class="dots">......</span><span class="more">Specializing in web development, SEO, and innovative branding strategies, they tailor their services to help clients thrive in the competitive digital landscape With a team of passionate experts, Colour Fit A Digital Agency transforms ideas into impactful digital experiences, ensuring your brand stands out and connects with your audience effectively. Trust them to drive your digital growth and turn your vision into reality.</span>
+                    </p>
+                    <a href="javascript:void(0);" class="read-more">Read More</a>
+                    <a href="https://colourfitsadigitalagency.com/" class="view-project">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h2>Finanza: Your Ultimate Financial Management Solution</h2>
+                    <p class="description">Finanza is an innovative financial management platform designed to streamline your financial operations with ease and efficiency. With a user-friendly interface, Finanza offers comprehensive tools for <span class="dots">......</span><span class="more">tracking expenses, managing budgets, and analyzing financial trends.Tailored for both individuals and businesses.Finanza empowers users to make informed financial decisions, optimize spending, and achieve their financial goals. Explore the full potential of your finances with Finanza, where simplicity meets powerful financial insights.</span></p>
+                    <a href="javascript:void(0);" class="read-more">Read More</a>
+                    <a href="https://finanza-xpor.vercel.app/" class="view-project">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h2>Anon: Your Trusted E-Commerce Platform</h2>
+                    <p class="description">
+                        Anon is a versatile e-commerce platform designed to provide a seamless shopping experience. With a focus on user privacy and security, Anon ensures that your transactions are safe and confidential.  <span class="dots">......</span><span class="more">The platform offers a wide range of products, intuitive navigation, and personalizedrecommendations to make your shopping journey enjoyable and efficient. Discover a new level of convenience and trust with Anon, where your satisfaction and security are the top priorities.</span>
+                    </p>
+                    <a href="javascript:void(0);" class="read-more">Read More</a>
+                    <a href="https://anon-alpha-seven.vercel.app/" class="view-project">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h2> Patrick David -UX/UI Designer & Developer</h2>
+                    <p class="description">
+                        Finanza is an innovative financial management platform designed to streamline your financial operations with ease and efficiency. With a user-friendly interface, Finanza offers comprehensive tools for tracking expenses, managing budgets, and analyzing financial trends<span class="dots">......</span><span class="more">. With a focus on delivering tailored solutions for global clients, he offers expertise in web design, development, and digital consulting. Explore his portfolio of celebrated projects and learn how he can elevate your brand’s digital presence. Connect today to bring your vision to life.</span></p>
+                        <a href="javascript:void(0);" class="read-more">Read More</a>
+                    <a href="https://bepatrickdavid.com/" class="view-project">View Project</a>
+                </div><div class="project-card">
+                    <h2>Onyedika Edewor - Front-End Engineer, UI/UX Developer & Web3 Enthusiast</h2>
+                    <p class="description">
+                        Explore the portfolio of Onyedika Edewor, a skilled front-end engineer and UI/UX developer with a passion for Web3 technologies. Onyedika specializes in creating seamless user experiences and responsive web designs,pushing the boundaries of modern web development<span class="dots">......</span><span class="more">Dive into his projects to see innovative solutions in action, blending cutting-edge technology with intuitive design. Connect with Onyedika to bring your digital ideas to life with expertise and creativity.</span>
+                    </p>
+                    <a href="javascript:void(0);" class="read-more">Read More</a>
+                    <a href="https://www.onyedika.xyz/" class="view-project">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h2>Resto - Culinary Delights & Gourmet Experiences</h2>
+                    <p class="description">
+                        Welcome to Resto, where culinary excellence meets delightful dining experiences. Explore a diverse menu featuring carefully crafted dishes made from the freshest ingredients. Whether you’re craving a gourmet meal or looking to book a table for a special occasion<span class="dots">......</span><span class="more">Resto offers a perfect blend of taste, ambiance, and service. Indulge in our special recipes and enjoy a memorable dining experience. Discover more and reserve your table today.</span></p>
+                    <a href="javascript:void(0);" class="read-more">Read More</a>
+                    <a href="https://resto-sooty.vercel.app/" class="view-project">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h2>Digimedia - Streamline Your Workflow with Speed and Precision</h2>
+                    Digimedia is a versatile platform designed to elevate digital experiences and optimize creative workflows. With an intuitive interface, it offers robust tools for enhancing productivity, whether you're managing multimedia projects or streamlining content creation.<span class="dots">......</span><span class="more"></span></p>
+                    </p>
+                    <a href="javascript:void(0);" class="read-more">Read More</a>
+                    <a href="https://faster-7son.vercel.app/" class="view-project">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h2> Cial - Expert Financial Services for Business Growth</h2>
+                    <p class="description">
+                        Cial is a financial services company dedicated to providing expert solutions for businesses. Specializing in financial management, consulting, and strategic planning, Cial helps companies navigate complex financial landscapes to achieve sustainable growth. With a team of seasoned professionals<span class="dots">......</span><span class="more">Cial offers tailored financial strategies that enhance efficiency and drive success. Explore how Cial can support your business with comprehensive financial services designed to meet your specific needs. Unlock your business’s full potential with Cial’s expert guidance.</span></p>
+                    <a href="javascript:void(0);" class="read-more">Read More</a>
+                    <a href="https://cial-tau.vercel.app/" class="view-project">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h2>Healet Sage - Exquisite Jewelry for Every Occasion</h2>
+                    <p class="description">
+                        Healet Sage offers a curated collection of high-quality, elegant jewelry designed to enhance your style and celebrate special moments. Explore our range of timeless pieces, from classic designs to modern statement accessories<span class="dots">......</span><span class="more"> and find the perfect addition to your jewelry collection. Shop now for exclusive pieces that reflect luxury and sophistication.</span></p>
+                    <a href="javascript:void(0);" class="read-more">Read More</a>
+                    <a href="https://healet-sage.vercel.app/" class="view-project">View Project</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.querySelectorAll('.read-more').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const description = this.previousElementSibling;
+                const moreText = description.querySelector('.more');
+                const dots = description.querySelector('.dots');
+                
+                if (moreText.style.display === "none" || moreText.style.display === "") {
+                    dots.style.display = "none";
+                    moreText.style.display = "inline";
+                    this.textContent = "Read Less";
+                } else {
+                    dots.style.display = "inline";
+                    moreText.style.display = "none";
+                    this.textContent = "Read More";
+                }
+            });
+        });
+    </script>
+    
+    <footer>
+        <p>&copy; 2024 Rohan Chaudhary. All rights reserved. | <a href="https://nex-gen-creations.vercel.app/">Privacy Policy</a></p>
+    </footer>
+
+</body>
+
+</html>
